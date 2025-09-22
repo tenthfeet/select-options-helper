@@ -3,8 +3,9 @@
 namespace Tenthfeet\SelectOptions;
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
 
-class SelectOptionsServiceProvider
+class SelectOptionsServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
