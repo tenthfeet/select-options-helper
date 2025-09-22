@@ -1,0 +1,38 @@
+{
+    "name": "tenthfeet/select-options-helper",
+    "description": "Flexible select options generator for PHP/Laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ayyamperumal J",
+            "email": "mail@tenthfeet.com",
+            "homepage": "https://tenthfeet.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^10.0 || ^11.0 || ^12.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tenthfeet\\SelectOptions\\": "src/"
+        },
+        "files": [
+            "src/helper.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tenthfeet\\SelectOptions\\SelectOptionsServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
