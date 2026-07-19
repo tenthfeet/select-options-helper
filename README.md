@@ -28,7 +28,7 @@ Via Composer:
 ```php
     generate_options(
         iterable $data,
-        array $selected = [],
+        string|array|null $selected = [],
         string $placeholder = '',
         bool $readonly = false,
         string|callable $textKey = 'text',
@@ -39,7 +39,7 @@ Via Composer:
 **Parameters:**
 
 - `$data` – Array, collection, or objects/models.
-- `$selected` – Array of values to mark selected.
+- `$selected` – Value, array of values, or `null` to mark selected options.
 - `$placeholder` – Optional placeholder text for `<option value="">`.
 - `$readonly` – Whether to disable the placeholder option.
 
@@ -76,4 +76,11 @@ echo generate_options($users, [], 'Choose user', false, fn($u) => "{$u->first_na
     @options($users, [1,2], 'Choose user')
 </select>
 
+```
+
+## Running Tests
+
+```bash
+    composer install
+    ./vendor/bin/phpunit --testdox
 ```

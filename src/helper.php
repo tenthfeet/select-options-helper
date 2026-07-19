@@ -14,7 +14,7 @@ if (! function_exists('generate_options')) {
 
     function generate_options(
         iterable $data,
-        string|array $selected = [],
+        string|array|null $selected = [],   
         string $placeholder = '',
         bool $readonly = false,
         string|callable $textKey = 'text',
@@ -28,12 +28,16 @@ if (! function_exists('generate_options')) {
             $options .= "<option value=\"\"$disabledAttribute>$safePlaceholder</option>";
         }
 
-        $selected = is_array($selected) ? array_map('strval', $selected) : [$selected];
+        $selected = match (true) {
+            $selected === null => [],
+            is_array($selected) => array_map('strval', $selected),
+            default => [(string) $selected],
+        };
 
         foreach (OptionNormalizer::normalize($data, $textKey, $valueKey) as $item) {
             $id = e($item['id']);
             $text = e($item['text']);
-            $isSelected = in_array($item['id'], $selected, true) ? ' selected' : '';
+            $isSelected = in_array((string) $item['id'], $selected, true) ? ' selected' : '';
 
             $options .= "<option value=\"$id\"$isSelected>$text</option>";
         }
